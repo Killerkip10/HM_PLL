@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./build",
+    "module": "commonjs",
+    "target": "esnext",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}
