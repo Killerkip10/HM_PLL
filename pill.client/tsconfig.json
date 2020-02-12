@@ -1,0 +1,9 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "esnext"
+  }
+}
