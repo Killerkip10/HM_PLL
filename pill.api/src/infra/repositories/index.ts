@@ -7,7 +7,7 @@ export const repository = ({ database }) => {
     },
   } = database;
 
-   return  {
+   return {
      userRepository: userRepository(User),
    };
 };

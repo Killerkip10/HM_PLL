@@ -4,4 +4,4 @@ export default ({ userRepository }) => {
   return {
     getAll,
   };
-}
+};
