@@ -4,6 +4,8 @@
     "baseUrl": "./",
     "outDir": "./build",
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "target": "esnext",
     "typeRoots": [

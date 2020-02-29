@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
-export default () => {
+export default ({
+  getUseCase,
+}) => {
   const router = Router();
 
-  router.get('/', (_, res) => res.send('User'));
+  router.get('/', (_, res) => getUseCase.getAll().then(data => res.send(data)));
 
   return router;
 };

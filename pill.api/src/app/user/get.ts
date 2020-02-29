@@ -1,5 +1,5 @@
 export default ({ userRepository }) => {
-  const getAll = userRepository.getAll();
+  const getAll = () => userRepository.getAll();
 
   return {
     getAll,

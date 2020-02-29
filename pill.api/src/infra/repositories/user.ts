@@ -1,4 +1,4 @@
-export const userRepository = ({ model }) => {
+export const userRepository = (model) => {
   const getAll = (...args) => model.findAll(...args);
 
   const create = (...args) => model.create(...args);

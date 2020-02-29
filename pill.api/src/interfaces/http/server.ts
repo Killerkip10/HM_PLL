@@ -3,12 +3,14 @@ import express from 'express';
 import { IServer } from './interfaces';
 import { router } from './router';
 
-const app = express();
+export const server = ({ database: { models }, config: { PORT } }): IServer => {
+  const app = express();
 
-app.use(router);
+  app.use('/api', router());
 
-app.get('/', (_, res) => res.send('Doroy'));
+  app.get('/', (_, res) => res.send('Doroy'));
 
-export const server = ({ database: { models } }): IServer => ({
-  start: () => app.listen(3000, () => console.log('Api was started on 3000', models)),
-});
+  return {
+    start: () => app.listen(PORT, () => console.log(`Api was started on ${PORT}`, models)),
+  };
+};
