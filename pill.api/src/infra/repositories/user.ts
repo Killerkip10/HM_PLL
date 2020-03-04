@@ -1,21 +1,39 @@
 import { User } from '../models/User';
 
-export const userRepository = () => {
-  const getAll = (...args) => User.findAll(...args);
+export class UserRepository {
+  public getAll(...args) {
+    return User.findAll(...args);
+  }
 
-  const getOne = (...args) => User.findOne(...args);
+  public getOne(...args) {
+    return User.findOne(...args);
+  }
 
-  const create = (user: User) => User.create(user);
+  public create(user: User) {
+    return User.create(user);
+  }
 
-  // const update = (...args) => User.update(...args);
+  public remove(...args) {
+    return User.destroy(...args);
+  }
+}
 
-  const remove = (...args) => User.destroy(...args);
-
-  return {
-    getAll,
-    getOne,
-    create,
-    // update,
-    remove,
-  };
-};
+// export const userRepository = () => {
+//   const getAll = (...args) =>
+//
+//   const getOne = (...args) => User.findOne(...args);
+//
+//   const create = (user: User) => User.create(user);
+//
+//   // const update = (...args) => User.update(...args);
+//
+//   const remove = (...args) => User.destroy(...args);
+//
+//   return {
+//     getAll,
+//     getOne,
+//     create,
+//     // update,
+//     remove,
+//   };
+// };

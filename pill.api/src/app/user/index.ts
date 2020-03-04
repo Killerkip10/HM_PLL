@@ -1,7 +1,7 @@
-import get from './get';
-import create from './create';
+import { Get } from './get';
+import { Create } from './create';
 
-export default {
-  get,
-  create,
+export const user = {
+  Get,
+  Create,
 };

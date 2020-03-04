@@ -7,7 +7,7 @@ const {
     DB_NAME = 'hm_pll',
     DB_HOST = '127.0.0.1',
     DB_DIALECT = 'mysql',
-  },
+  } = {},
 } = dotenv.config();
 
 const DB = {

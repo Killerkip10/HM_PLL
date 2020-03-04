@@ -1,10 +1,13 @@
 import { Router } from 'express';
 import { BAD_REQUEST } from 'http-status';
 
-export default ({
-  getUseCase,
-  createUseCase,
-}) => {
+import { Get } from '../../../../../app/user/get';
+import { Create } from '../../../../../app/user/create';
+
+export default (
+  getUseCase: Get,
+  createUseCase: Create,
+) => {
   const router = Router();
 
   router.get('/', (_, res) => getUseCase
@@ -22,7 +25,7 @@ export default ({
   );
 
   router.get('/:id', (req, res) => getUseCase
-    .byId(req.params.id)
+    .byId(Number(req.params.id))
     .then(data => res.send(data)),
   );
 

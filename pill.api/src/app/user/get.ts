@@ -1,10 +1,15 @@
-export default (userRepository) => {
-  const all = () => userRepository.getAll();
+import { UserRepository } from '../../infra/repositories';
 
-  const byId = (id: number) => userRepository.getOne({ where: { id } });
+export class Get {
+  public constructor(
+    private userRepository: UserRepository,
+  ) { }
 
-  return {
-    all,
-    byId,
-  };
-};
+  public all() {
+    return this.userRepository.getAll();
+  }
+
+  public byId(id: number) {
+    return this.userRepository.getOne({ where: { id } });
+  }
+}

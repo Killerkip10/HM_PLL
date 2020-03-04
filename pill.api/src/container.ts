@@ -3,8 +3,16 @@ import { createContainer, asFunction, asValue } from 'awilix';
 import { app, methods } from './app';
 import { config } from './config';
 import { database } from './infra/database';
-import { repository } from './infra/repositories';
+import { repository, IRepository } from './infra/repositories';
 import { server } from './interfaces/http';
+
+export interface IContainer {
+  repository: IRepository;
+  methods: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  server: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  database: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  config: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
 
 export const container = createContainer();
 

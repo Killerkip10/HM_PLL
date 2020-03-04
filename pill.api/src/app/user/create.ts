@@ -1,9 +1,12 @@
 import { User } from '../../infra/models/User';
+import { UserRepository } from '../../infra/repositories';
 
-export default (userRepository) => {
-  const create = (user: User) => userRepository.create(user);
+export class Create {
+  public constructor(
+    private userRepository: UserRepository,
+  ) { }
 
-  return {
-    create,
-  };
-};
+  public create(user: User) {
+    return this.userRepository.create(user);
+  }
+}

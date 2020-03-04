@@ -1,14 +1,14 @@
 import router from './router';
-import instance from './instance';
-import { container } from '../../../../../container';
+import { container, IContainer } from '../../../../../container';
 
 export default () => {
   const {
-    methods: { user: { get, create } },
+    methods: { user: { Get, Create } },
     repository: { userRepository },
-  } = container.cradle;
+  }: IContainer = container.cradle;
 
-  const app = instance({ userRepository, get, create });
+  const getUseCase = new Get(userRepository);
+  const createUseCase = new Create(userRepository);
 
-  return router({ ...app });
+  return router(getUseCase, createUseCase);
 };
