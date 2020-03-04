@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
-    "build": "tsc",
+    "build": "rimraf build && tsc",
     "start": "node ./build/index.js",
     "lint": "eslint --ext .ts .",
     "migrate": "sequelize-cli db:migrate",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "awilix": "4.2.4",
+    "body-parser": "1.19.0",
     "express": "4.17.1",
     "http-status": "1.4.2",
     "mysql2": "2.1.0",

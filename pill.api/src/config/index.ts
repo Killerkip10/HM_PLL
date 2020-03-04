@@ -4,7 +4,7 @@ import { DB } from './database';
 
 const {
   parsed: {
-    PORT = 3000,
+    PORT = '3000',
   },
 } = dotenv.config();
 

@@ -6,10 +6,12 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "allowJs": true,
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es6",
     "typeRoots": [
       "node_modules/@types"
     ]
-  }
+  },
+  "exclude": ["commitlint.config.js"]
 }

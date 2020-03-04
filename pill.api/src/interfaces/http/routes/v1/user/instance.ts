@@ -1,7 +1,9 @@
-export const instance = ({ userRepository, getAll }) => {
-  const getUseCase = getAll({ userRepository });
+export default ({ userRepository, get, create }) => {
+  const getUseCase = get(userRepository);
+  const createUseCase = create(userRepository);
 
   return {
     getUseCase,
+    createUseCase,
   };
 };

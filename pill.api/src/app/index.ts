@@ -1,5 +1,8 @@
 import user from './user';
-import { IApp } from './interfaces';
+
+export interface IApp {
+  start: () => void;
+}
 
 export const app = ({ server, database }): IApp => ({
     start: () => Promise.resolve()

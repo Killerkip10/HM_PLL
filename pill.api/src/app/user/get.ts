@@ -1,7 +1,10 @@
-export default ({ userRepository }) => {
-  const getAll = () => userRepository.getAll();
+export default (userRepository) => {
+  const all = () => userRepository.getAll();
+
+  const byId = (id: number) => userRepository.getOne({ where: { id } });
 
   return {
-    getAll,
+    all,
+    byId,
   };
 };

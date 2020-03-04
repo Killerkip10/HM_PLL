@@ -1,13 +1,21 @@
-export const userRepository = (model) => {
-  const getAll = (...args) => model.findAll(...args);
+import { User } from '../models/User';
 
-  const create = (...args) => model.create(...args);
+export const userRepository = () => {
+  const getAll = (...args) => User.findAll(...args);
 
-  const update = (...args) => model.update(...args);
+  const getOne = (...args) => User.findOne(...args);
+
+  const create = (user: User) => User.create(user);
+
+  // const update = (...args) => User.update(...args);
+
+  const remove = (...args) => User.destroy(...args);
 
   return {
     getAll,
+    getOne,
     create,
-    update,
+    // update,
+    remove,
   };
 };
