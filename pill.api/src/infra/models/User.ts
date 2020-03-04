@@ -10,8 +10,10 @@ import {
   IsEmail,
 } from 'sequelize-typescript';
 
+import { IUser } from '../../domain';
+
 @Table
-export class User extends Model<User> {
+export class User extends Model<User> implements IUser {
   @PrimaryKey
   @Column
   public id: number;

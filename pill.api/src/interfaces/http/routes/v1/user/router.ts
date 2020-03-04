@@ -1,12 +1,11 @@
 import { Router } from 'express';
 import { BAD_REQUEST } from 'http-status';
 
-import { Get } from '../../../../../app/user/get';
-import { Create } from '../../../../../app/user/create';
+import { Get, Post } from '../../../../../app/user';
 
 export default (
   getUseCase: Get,
-  createUseCase: Create,
+  createUseCase: Post,
 ) => {
   const router = Router();
 
@@ -15,13 +14,10 @@ export default (
     .then(data => res.send(data)),
   );
 
-  router.post('/', (req, res) => {
-    console.log(req.body);
-    createUseCase
-        .create(req.body)
-        .then(data => res.send(data))
-      .catch(error => res.status(BAD_REQUEST).send(error));
-    },
+  router.post('/', (req, res) => createUseCase
+    .create(req.body)
+    .then(data => res.send(data))
+    .catch(error => res.status(BAD_REQUEST).send(error)),
   );
 
   router.get('/:id', (req, res) => getUseCase

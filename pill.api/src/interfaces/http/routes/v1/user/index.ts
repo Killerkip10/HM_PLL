@@ -3,12 +3,12 @@ import { container, IContainer } from '../../../../../container';
 
 export default () => {
   const {
-    methods: { user: { Get, Create } },
+    methods: { user: { Get, Post } },
     repository: { userRepository },
   }: IContainer = container.cradle;
 
   const getUseCase = new Get(userRepository);
-  const createUseCase = new Create(userRepository);
+  const createUseCase = new Post(userRepository);
 
   return router(getUseCase, createUseCase);
 };

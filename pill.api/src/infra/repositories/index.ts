@@ -1,13 +1,15 @@
 import { UserRepository } from './user';
 
-export interface IRepository {
+interface IRepository {
   userRepository: UserRepository;
 }
 
-export const repository = () => ({
+const repository = () => ({
   userRepository: new UserRepository(),
 });
 
 export {
+  repository,
+  IRepository,
   UserRepository,
 };

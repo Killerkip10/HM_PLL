@@ -1,7 +1,11 @@
-import { user } from './user';
+import { user, IUser } from './user';
 
 export interface IApp {
   start: () => void;
+}
+
+export interface IMethods {
+  user: IUser;
 }
 
 export const app = ({ server, database }): IApp => ({

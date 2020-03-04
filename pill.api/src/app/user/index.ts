@@ -1,7 +1,18 @@
 import { Get } from './get';
-import { Create } from './create';
+import { Post } from './post';
+import { UserRepository } from '../../infra/repositories';
+
+export interface IUser {
+  Get: new (userRepository: UserRepository) => Get;
+  Post: new (userRepository: UserRepository) => Post;
+}
 
 export const user = {
   Get,
-  Create,
+  Post,
+};
+
+export {
+  Get,
+  Post,
 };
