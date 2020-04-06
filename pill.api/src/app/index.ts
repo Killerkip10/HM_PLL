@@ -1,4 +1,5 @@
 import { user, IUser } from './user';
+import { illness, IIllness } from './illness';
 
 export interface IApp {
   start: () => void;
@@ -6,6 +7,7 @@ export interface IApp {
 
 export interface IMethods {
   user: IUser;
+  illness: IIllness;
 }
 
 export const app = ({ server, database }): IApp => ({
@@ -14,6 +16,7 @@ export const app = ({ server, database }): IApp => ({
       .then(server.start),
 });
 
-export const methods = () => ({
+export const methods = (): IMethods => ({
   user,
+  illness,
 });

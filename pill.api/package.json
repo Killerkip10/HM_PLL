@@ -9,10 +9,13 @@
     "build": "rimraf build && tsc",
     "start": "node ./build/index.js",
     "lint": "eslint --ext .ts .",
-    "migrate": "sequelize-cli db:migrate",
-    "migrate:undo": "sequelize-cli db:migrate:undo",
-    "migrate:undo:all": "sequelize-cli db:migrate:undo:all",
-    "seed": "sequelize-cli db:seed:all"
+    "db:create": "sequelize db:create",
+    "db:drop": "sequelize db:drop",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:migrate:undo:all": "sequelize db:migrate:undo:all",
+    "db:seed": "sequelize db:seed:all",
+    "db:refresh": "yarn run db:drop && yarn run db:create && yarn run db:migrate && yarn run db:seed"
   },
   "husky": {
     "hooks": {

@@ -7,14 +7,14 @@ import {
   UpdatedAt,
   AllowNull,
   NotEmpty,
-  IsEmail,
   AutoIncrement,
+  Unique,
 } from 'sequelize-typescript';
 
-import { IUser } from '../../domain';
+import { IIllness } from '../../domain';
 
 @Table
-export class User extends Model<User> implements IUser {
+export class Illness extends Model<Illness> implements IIllness {
   @PrimaryKey
   @AutoIncrement
   @Column
@@ -22,24 +22,13 @@ export class User extends Model<User> implements IUser {
 
   @AllowNull(false)
   @NotEmpty
+  @Unique
   @Column
-  public firstName: string;
+  public name: string;
 
-  @AllowNull(false)
   @NotEmpty
   @Column
-  public lastName: string;
-
-  @AllowNull(false)
-  @NotEmpty
-  @IsEmail
-  @Column
-  public email: string;
-
-  @AllowNull(false)
-  @NotEmpty
-  @Column
-  public password: string;
+  public description: string;
 
   @CreatedAt
   @Column

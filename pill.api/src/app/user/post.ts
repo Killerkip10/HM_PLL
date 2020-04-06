@@ -10,16 +10,12 @@ export class Post {
   ) { }
 
   public create(user: IUser) {
-    try {
-      const entity = User.decode(user);
+    const entity = User.decode(user);
 
-      if (isLeft(entity)) {
-        console.log(PathReporter.report(entity));
-      }
-
-      return this.userRepository.create(user);
-    } catch (e) {
-      console.log('Error', e);
+    if (isLeft(entity)) {
+      return Promise.reject(PathReporter.report(entity));
     }
+
+    return this.userRepository.create(user);
   }
 }

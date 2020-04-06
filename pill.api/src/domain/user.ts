@@ -1,11 +1,16 @@
 import * as t from 'io-ts';
 
-export const User = t.type({
-  id: t.number,
+const ExactUser = t.type({
   firstName: t.string,
   lastName: t.string,
   email: t.string,
   password: t.string,
 });
+
+const PartialUser = t.partial({
+  id: t.number,
+});
+
+export const User = t.intersection([ExactUser, PartialUser]);
 
 export type IUser = t.TypeOf<typeof User>;

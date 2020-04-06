@@ -12,14 +12,20 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Users', [{
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'example@example.com',
-      password: '1234',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }]);
+    return queryInterface.bulkInsert('Illnesses', [
+      {
+        name: 'Cold',
+        description: 'Cold cold cold',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Covid-19',
+        description: 'death death death',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {

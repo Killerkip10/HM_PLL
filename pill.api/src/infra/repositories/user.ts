@@ -1,4 +1,5 @@
 import { User } from '../models/User';
+import { IUser } from '../../domain';
 
 export class UserRepository {
   public getAll(...args) {
@@ -9,7 +10,7 @@ export class UserRepository {
     return User.findOne(...args);
   }
 
-  public create(user: User) {
+  public create(user: IUser) {
     return User.create(user);
   }
 
