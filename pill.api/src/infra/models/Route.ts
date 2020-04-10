@@ -11,10 +11,10 @@ import {
   Unique,
 } from 'sequelize-typescript';
 
-import { IIllness } from '../../domain';
+import { IRoute } from '../../domain';
 
 @Table
-export class Illness extends Model<Illness> implements IIllness {
+export class Route extends Model<Route> implements IRoute {
   @PrimaryKey
   @AutoIncrement
   @Column
@@ -25,11 +25,6 @@ export class Illness extends Model<Illness> implements IIllness {
   @Unique
   @Column
   public name: string;
-
-  @AllowNull(false)
-  @NotEmpty
-  @Column
-  public description: string;
 
   @CreatedAt
   @Column
