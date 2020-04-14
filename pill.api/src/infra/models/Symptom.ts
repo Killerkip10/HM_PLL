@@ -9,9 +9,12 @@ import {
   NotEmpty,
   AutoIncrement,
   Unique,
+  BelongsToMany,
 } from 'sequelize-typescript';
 
 import { ISymptom } from '../../domain';
+import { Illness } from './Illness';
+import { IllnessSymptom } from './IllnessSymptom';
 
 @Table
 export class Symptom extends Model<Symptom> implements ISymptom {
@@ -25,6 +28,9 @@ export class Symptom extends Model<Symptom> implements ISymptom {
   @Unique
   @Column
   public name: string;
+
+  @BelongsToMany(() => Illness,() => IllnessSymptom)
+  public illnesses;
 
   @CreatedAt
   @Column
