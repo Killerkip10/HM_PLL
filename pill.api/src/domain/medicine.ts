@@ -4,9 +4,9 @@ const ExactMedicine = t.type({
   name: t.string,
   description: t.string,
   wayUse: t.string,
-  typeId: t.number,
+  typeMedicineId: t.number,
   routeId: t.number,
-  productionMethodId: t.number,
+  productionMedicineMethodId: t.number,
 });
 
 const PartialMedicine = t.partial({

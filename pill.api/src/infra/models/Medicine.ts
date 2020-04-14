@@ -15,6 +15,8 @@ import {
 } from 'sequelize-typescript';
 
 import { Route } from './Route';
+import { TypeMedicine } from './TypeMedicine';
+import { ProductionMedicineMethod } from './ProductionMedicineMethod';
 import { IMedicine } from '../../domain';
 
 @Table
@@ -40,10 +42,16 @@ export class Medicine extends Model<Medicine> implements IMedicine {
   @Column({ type: DataType.TEXT })
   public wayUse: string;
 
+
   @AllowNull(false)
   @NotEmpty
+  @ForeignKey(() => TypeMedicine)
   @Column
-  public typeId: number;
+  public typeMedicineId: number;
+
+  @BelongsTo(() => TypeMedicine)
+  public typeMedicine: TypeMedicine;
+
 
   @AllowNull(false)
   @NotEmpty
@@ -54,10 +62,16 @@ export class Medicine extends Model<Medicine> implements IMedicine {
   @BelongsTo(() => Route)
   public route: Route;
 
+
   @AllowNull(false)
   @NotEmpty
+  @ForeignKey(() => ProductionMedicineMethod)
   @Column
-  public productionMethodId: number;
+  public productionMedicineMethodId: number;
+
+  @BelongsTo(() => ProductionMedicineMethod)
+  public productionMedicineMethod: ProductionMedicineMethod;
+
 
   @CreatedAt
   @Column
