@@ -4,7 +4,7 @@ const ExactProductionMedicineMethod = t.type({
   name: t.string,
 });
 
-const PartialProductionMedicineMethod  = t.partial({
+const PartialProductionMedicineMethod = t.partial({
   id: t.number,
 });
 
