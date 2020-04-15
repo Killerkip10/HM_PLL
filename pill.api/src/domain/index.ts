@@ -5,3 +5,4 @@ export * from './route';
 export * from './typeMedicine';
 export * from './productionMedicineMethod';
 export * from './symptom';
+export * from './group';

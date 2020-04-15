@@ -14,10 +14,10 @@ import {
   DataType,
 } from 'sequelize-typescript';
 
+import { IMedicine } from '../../domain';
 import { Route } from './Route';
 import { TypeMedicine } from './TypeMedicine';
 import { ProductionMedicineMethod } from './ProductionMedicineMethod';
-import { IMedicine } from '../../domain';
 
 @Table
 export class Medicine extends Model<Medicine> implements IMedicine {

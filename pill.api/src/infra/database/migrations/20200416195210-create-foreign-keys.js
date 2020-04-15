@@ -36,6 +36,75 @@ module.exports = {
       onUpdate: 'cascade',
     });
     //
+    // ############################### MedicineGroups ###############################
+    await queryInterface.addConstraint('MedicineGroups', ['medicineId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineGroups_1',
+      references: {
+        table: 'Medicines',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+
+    await queryInterface.addConstraint('MedicineGroups', ['groupId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineGroups_2',
+      references: {
+        table: 'Groups',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+    //
+    // ############################### MedicineConflicts ###############################
+    await queryInterface.addConstraint('MedicineConflicts', ['medicineId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineConflicts_1',
+      references: {
+        table: 'Medicines',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+
+    await queryInterface.addConstraint('MedicineConflicts', ['conflictMedicineId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineConflicts_2',
+      references: {
+        table: 'Medicines',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+    //
+    // ############################### MedicineGroupConflicts ###############################
+    await queryInterface.addConstraint('MedicineGroupConflicts', ['medicineId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineGroupConflicts_1',
+      references: {
+        table: 'Medicines',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+
+    await queryInterface.addConstraint('MedicineGroupConflicts', ['groupId'],{
+      type: 'FOREIGN KEY',
+      name: 'MedicineGroupConflicts_2',
+      references: {
+        table: 'Groups',
+        field: 'id',
+      },
+      onDelete: 'restrict',
+      onUpdate: 'cascade',
+    });
+    //
     // ############################### IllnessSymptoms ###############################
     await queryInterface.addConstraint('IllnessSymptoms', ['illnessId'],{
       type: 'FOREIGN KEY',
@@ -93,5 +162,14 @@ module.exports = {
 
     await queryInterface.removeConstraint('IllnessMedicines', 'IllnessMedicines_1');
     await queryInterface.removeConstraint('IllnessMedicines', 'IllnessMedicines_2');
+
+    await queryInterface.removeConstraint('MedicineGroups', 'MedicineGroups_1');
+    await queryInterface.removeConstraint('MedicineGroups', 'MedicineGroups_2');
+
+    await queryInterface.removeConstraint('MedicineConflicts', 'MedicineConflicts_1');
+    await queryInterface.removeConstraint('MedicineConflicts', 'MedicineConflicts_2');
+
+    await queryInterface.removeConstraint('MedicineGroupConflicts', 'MedicineGroupConflicts_1');
+    await queryInterface.removeConstraint('MedicineGroupConflicts', 'MedicineGroupConflicts_2');
   },
 };
