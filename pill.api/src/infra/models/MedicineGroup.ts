@@ -3,6 +3,7 @@ import {
   Column,
   Table,
   ForeignKey,
+  PrimaryKey,
 } from 'sequelize-typescript';
 
 import { Medicine } from './Medicine';
@@ -10,6 +11,7 @@ import { Group } from './Group';
 
 @Table
 export class MedicineGroup extends Model<MedicineGroup> {
+  @PrimaryKey
   @ForeignKey(() => Medicine)
   @Column
   public medicineId: number;

@@ -12,12 +12,14 @@ import {
   ForeignKey,
   BelongsTo,
   DataType,
+  HasMany,
 } from 'sequelize-typescript';
 
 import { IMedicine } from '../../domain';
 import { Route } from './Route';
 import { TypeMedicine } from './TypeMedicine';
 import { ProductionMedicineMethod } from './ProductionMedicineMethod';
+import { MedicineConflict } from './MedicineConflict';
 
 @Table
 export class Medicine extends Model<Medicine> implements IMedicine {
@@ -71,6 +73,10 @@ export class Medicine extends Model<Medicine> implements IMedicine {
 
   @BelongsTo(() => ProductionMedicineMethod)
   public productionMedicineMethod: ProductionMedicineMethod;
+
+
+  // @HasMany(() => MedicineConflict)
+  // public conflicts
 
 
   @CreatedAt

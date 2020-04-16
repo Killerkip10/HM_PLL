@@ -15,8 +15,10 @@ import {
 import { IIllness } from '../../domain';
 import { IllnessSymptom } from './IllnessSymptom';
 import { IllnessMedicine } from './IllnessMedicine';
+import { IllnessRecommendation } from './IllnessRecommendation';
 import { Symptom } from './Symptom';
 import { Medicine } from './Medicine';
+import { Recommendation } from './Recommendation';
 
 @Table
 export class Illness extends Model<Illness> implements IIllness {
@@ -41,6 +43,9 @@ export class Illness extends Model<Illness> implements IIllness {
 
   @BelongsToMany(() => Medicine, () => IllnessMedicine)
   public medicines: Medicine[];
+
+  @BelongsToMany(() => Recommendation, () => IllnessRecommendation)
+  public recommendations: Recommendation[];
 
   @CreatedAt
   @Column

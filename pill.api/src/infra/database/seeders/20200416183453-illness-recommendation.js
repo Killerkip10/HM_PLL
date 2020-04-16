@@ -12,22 +12,28 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('MedicineGroups', [
+    return queryInterface.bulkInsert('IllnessRecommendations', [
       {
-        medicineId: 1,
-        groupId: 1,
+        illnessId: 1,
+        recommendationId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        medicineId: 2,
-        groupId: 2,
+        illnessId: 1,
+        recommendationId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        medicineId: 4,
-        groupId: 1,
+        illnessId: 2,
+        recommendationId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        illnessId: 2,
+        recommendationId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

@@ -150,6 +150,29 @@ module.exports = {
       onDelete: 'no action',
       onUpdate: 'cascade',
     });
+    //
+    // ############################### IllnessRecommendations ###############################
+    await queryInterface.addConstraint('IllnessRecommendations', ['illnessId'],{
+      type: 'FOREIGN KEY',
+      name: 'IllnessRecommendations_1',
+      references: {
+        table: 'Illnesses',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'cascade',
+    });
+
+    await queryInterface.addConstraint('IllnessRecommendations', ['recommendationId'],{
+      type: 'FOREIGN KEY',
+      name: 'IllnessRecommendations_2',
+      references: {
+        table: 'Recommendations',
+        field: 'id',
+      },
+      onDelete: 'no action',
+      onUpdate: 'cascade',
+    });
   },
 
   down: async (queryInterface) => {
@@ -162,6 +185,9 @@ module.exports = {
 
     await queryInterface.removeConstraint('IllnessMedicines', 'IllnessMedicines_1');
     await queryInterface.removeConstraint('IllnessMedicines', 'IllnessMedicines_2');
+
+    await queryInterface.removeConstraint('IllnessRecommendations', 'IllnessRecommendations_1');
+    await queryInterface.removeConstraint('IllnessRecommendations', 'IllnessRecommendations_2');
 
     await queryInterface.removeConstraint('MedicineGroups', 'MedicineGroups_1');
     await queryInterface.removeConstraint('MedicineGroups', 'MedicineGroups_2');

@@ -20,5 +20,10 @@ export default (
     .catch(error => res.status(BAD_REQUEST).send(error)),
   );
 
+  router.get('/conflicts', (_, res) => getUseCase
+    .conflicts()
+    .then(data => res.send(data)),
+  );
+
   return router;
 };

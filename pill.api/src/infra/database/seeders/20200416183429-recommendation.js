@@ -12,22 +12,14 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('MedicineGroups', [
+    return queryInterface.bulkInsert('Recommendations', [
       {
-        medicineId: 1,
-        groupId: 1,
+        name: 'Сидеть дома',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        medicineId: 2,
-        groupId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        medicineId: 4,
-        groupId: 1,
+        name: 'Пить чай',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

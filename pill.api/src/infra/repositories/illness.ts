@@ -3,6 +3,7 @@ import { IIllness } from '../../domain';
 import { Illness } from '../models/Illness';
 import { Symptom } from '../models/Symptom';
 import { Medicine } from '../models/Medicine';
+import { Recommendation } from '../models/Recommendation';
 
 export class IllnessRepository {
   public getAll() {
@@ -10,6 +11,11 @@ export class IllnessRepository {
       include: [
         {
           model: Symptom,
+          attributes: { exclude: DATE_ATTRIBUTES_EXCLUDE },
+          through: { attributes: [] },
+        },
+        {
+          model: Recommendation,
           attributes: { exclude: DATE_ATTRIBUTES_EXCLUDE },
           through: { attributes: [] },
         },

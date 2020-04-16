@@ -28,6 +28,11 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Раствор',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

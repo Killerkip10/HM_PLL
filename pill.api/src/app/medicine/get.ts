@@ -8,4 +8,8 @@ export class Get {
   public all() {
     return this.medicineRepository.getAll();
   }
+
+  public conflicts() {
+    return this.medicineRepository.getMedicineConflicts([2, 4]);
+  }
 }
