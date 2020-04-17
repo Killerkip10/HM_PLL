@@ -22,7 +22,7 @@ module.exports = {
     },
     devtool: isDev ? 'inline-source-map' : false,
     devServer: {
-        port: 3000,
+        port: 3030,
     },
     module: {
         rules: [
