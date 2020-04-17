@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './index.tsx',
+    entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, 'build'),
         filename: isDev ? '[name].js' : '[name]-[chunkhash].js',
@@ -38,7 +38,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ template: 'index.html' }),
+        new HtmlWebpackPlugin({ template: './src/index.html' }),
         new ForkTsCheckerWebpackPlugin(),
     ]
 };
