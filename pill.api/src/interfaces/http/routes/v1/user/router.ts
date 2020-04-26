@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { BAD_REQUEST } from 'http-status';
 
+import { isAuthorized, isAdmin } from '../../../middlewares';
 import { Get, Post } from '../../../../../app/user';
 
 export default (
@@ -9,18 +10,21 @@ export default (
 ) => {
   const router = Router();
 
-  router.get('/', (_, res) => getUseCase
+  router.get('/', isAuthorized, isAdmin, (_, res) => getUseCase
     .all()
     .then(data => res.send(data)),
   );
 
-  router.post('/', (req, res) => createUseCase
+  router.post('/', isAuthorized, isAdmin, (req, res) => createUseCase
     .create(req.body)
     .then(data => res.send(data))
     .catch(error => res.status(BAD_REQUEST).send(error)),
   );
 
-  router.get('/:id', (req, res) => getUseCase
+	router.get('/profile', isAuthorized, (req, res) => res.send(req.session.profile));
+	// router.get('/profile', (req, res) => res.send({ id: 1, firstName: 'Vlad' }));
+
+	router.get('/:id', isAuthorized, isAdmin, (req, res) => getUseCase
     .byId(Number(req.params.id))
     .then(data => res.send(data)),
   );

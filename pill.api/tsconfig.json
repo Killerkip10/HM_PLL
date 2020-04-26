@@ -11,7 +11,7 @@
     "target": "es6",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
   },
   "exclude": ["commitlint.config.js"]
 }

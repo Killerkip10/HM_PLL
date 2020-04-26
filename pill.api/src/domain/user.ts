@@ -5,6 +5,7 @@ const ExactUser = t.type({
   lastName: t.string,
   email: t.string,
   password: t.string,
+	role: t.number,
 });
 
 const PartialUser = t.partial({

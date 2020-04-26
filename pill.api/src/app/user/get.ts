@@ -12,4 +12,8 @@ export class Get {
   public byId(id: number) {
     return this.userRepository.getOne({ where: { id } });
   }
+
+  public byCredentials(email: string, password: string) {
+		return this.userRepository.getOne({ where: { email, password } });
+	}
 }

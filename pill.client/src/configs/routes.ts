@@ -1,4 +1,7 @@
-export const ROUTES = {
-	LOGIN: 'login',
-	REGISTRATION: 'registration',
+export const ROUTE = {
+	LOGIN: '/login',
+	REGISTRATION: '/registration',
+	ILLNESSES: '/illnesses',
 };
+
+export const PUBLIC_ROUTES = [ROUTE.LOGIN, ROUTE.REGISTRATION];

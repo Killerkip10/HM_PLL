@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import { Router } from 'components/Router';
 import { Profile } from 'components/Profile';
-import { Permissions } from 'components/Permissions';
+import { ErrorHandler } from 'components/ErrorHandler';
+import { Header } from 'components/Header';
 
 export const App = memo(() => (
 	<>
-		<header>Header</header>
+		<Header />
 		<Router />
 		<footer>Footer</footer>
 	</>
@@ -19,9 +20,9 @@ export const AppContainer = memo(() => (
 	<BrowserRouter>
 		<Provider store={store}>
 			<Profile>
-				<Permissions>
+				<ErrorHandler>
 					<App />
-				</Permissions>
+				</ErrorHandler>
 			</Profile>
 		</Provider>
 	</BrowserRouter>
