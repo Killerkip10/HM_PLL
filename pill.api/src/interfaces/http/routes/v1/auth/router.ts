@@ -1,12 +1,9 @@
 import { Router } from 'express';
 import { BAD_REQUEST } from 'http-status';
 
-import { Get, Post } from '../../../../../app/user';
+import { Get } from '../../../../../app/user';
 
-export default (
-	getUseCase: Get,
-	createUseCase: Post,
-) => {
+export default (getUseCase: Get) => {
 	const router = Router();
 
 	router.post('/login', (req, res) => getUseCase

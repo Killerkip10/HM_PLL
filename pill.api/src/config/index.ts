@@ -16,7 +16,7 @@ const {
 export const config = {
   PORT,
 	SESSION: {
-  	name: SESSION_NAME,
+		name: SESSION_NAME,
 		secret: SESSION_SECRET,
 		saveUninitialized: SESSION_SAVE_UNINITIALIZED,
 		resave: SESSION_RESAVE,
