@@ -17,7 +17,7 @@ export default (getUseCase: Get) => {
 					} else {
 						res.status(BAD_REQUEST).send();
 					}
-				})
+				});
 		},
 	);
 

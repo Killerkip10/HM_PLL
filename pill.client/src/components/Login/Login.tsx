@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
 import { flowRight } from 'lodash';
 
 import { RFields } from 'components/common/RFields';
@@ -44,7 +43,4 @@ const formCreator = reduxForm({
 	},
 });
 
-export const Login = flowRight(
-	withRouter,
-	formCreator,
-)(LoginComponent);
+export const Login = flowRight(formCreator)(LoginComponent);
