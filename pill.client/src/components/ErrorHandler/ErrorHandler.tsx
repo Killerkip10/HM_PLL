@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, memo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { flowRight } from 'lodash';
 
 import { ROUTE } from 'configs';
 import { getCodeSelector } from 'store';
+import { resetUserAuthorization } from 'utils';
 
 interface IProps {
 	code: number;
@@ -14,11 +15,15 @@ interface IProps {
 }
 
 export const ErrorHandlerComponent = ({ code, children, history }: IProps) => {
-	switch (code) {
-		case 401:
-			history.push(ROUTE.LOGIN);
-			break;
-	}
+	console.log(2);
+	useEffect(() => {
+		switch (code) {
+			case 401:
+				resetUserAuthorization();
+				history.push(ROUTE.LOGIN);
+				break;
+		}
+	}, [code, history]);
 
 	return (
 		<>
