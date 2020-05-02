@@ -10,6 +10,7 @@ const {
 		SESSION_SAVE_UNINITIALIZED = false,
 		SESSION_RESAVE = false,
 		SESSIONS_COOKIE_MAX_AGE = 1000 * 60 * 60,
+		SESSION_COOKIE_HTTP_ONLY = false,
   } = {},
 } = dotenv.config();
 
@@ -22,6 +23,7 @@ export const config = {
 		resave: SESSION_RESAVE,
 		cookie: {
 			maxAge: SESSIONS_COOKIE_MAX_AGE,
+			httpOnly: SESSION_COOKIE_HTTP_ONLY,
 		},
 	},
   ...DB,

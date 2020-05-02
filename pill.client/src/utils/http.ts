@@ -11,7 +11,7 @@ const handleResponse = (response) =>	{
 		return Promise.reject(response.status);
 	}
 
-	return Promise.resolve(response);
+	return Promise.resolve(response.json());
 };
 
 const handleError = (status: number) => {

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { flowRight } from 'lodash';
 
 import { RFields } from 'components/common/RFields';
@@ -19,14 +19,12 @@ export const LoginComponent = ({ handleSubmit, history }) => {
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
-			<Field
+			<RFields.Input
 				name={FORM_FIELDS.EMAIL}
-				component={RFields.Input}
 				validate={[requiredValidator, emailValidator]}
 			/>
-			<Field
+			<RFields.Input
 				name={FORM_FIELDS.PASSWORD}
-				component={RFields.Input}
 				validate={[requiredValidator]}
 			/>
 			<button type="submit">Login</button>

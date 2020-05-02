@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { flowRight } from 'lodash';
@@ -15,7 +15,6 @@ interface IProps {
 }
 
 export const ErrorHandlerComponent = ({ code, children, history }: IProps) => {
-	console.log(2);
 	useEffect(() => {
 		switch (code) {
 			case 401:
