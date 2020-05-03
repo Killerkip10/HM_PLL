@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Field } from 'redux-form';
 
 export const renderField = WrappedComponent => ({ input, ...props }) => (
@@ -11,10 +11,10 @@ export const renderField = WrappedComponent => ({ input, ...props }) => (
 export const renderReduxField = WrappedComponent => {
 	const field = renderField(WrappedComponent);
 
-	return props => (
+	return memo(props => (
 		<Field
 			component={field}
 			{...props}
 		/>
-	);
+	));
 };

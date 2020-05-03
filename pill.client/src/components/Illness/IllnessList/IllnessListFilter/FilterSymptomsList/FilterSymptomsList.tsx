@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { RFields } from 'components/common/RFields';
+import { FilterSymptomsListItem } from './FilterSymptomsListItem';
 
-export const FilterSymptomsList = ({ fields, symptoms }) => (
+export const FilterSymptomsList = ({ fields, symptoms, onRemoveSymptom }) => (
 	<div>
-		{fields.map(name => (
-			<RFields.Select name={name}>
-				{symptoms.map(s => (
-					<option value={s.id}>{s.name}</option>
-				))}
-			</RFields.Select>
+		{fields.map((name, index) => (
+			<FilterSymptomsListItem
+				key={index}
+				name={name}
+				index={index}
+				symptoms={symptoms}
+				onRemoveSymptom={onRemoveSymptom}
+			/>
 		))}
 	</div>
 );
