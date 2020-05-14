@@ -16,6 +16,7 @@ export const FilterSymptomsListItemComponent = ({ index, name, symptoms, onRemov
 			<RFields.Select name={name}>
 				{renderSymptomOptions}
 			</RFields.Select>
+
 			<button type="button" onClick={handleRemoveSymptomClick}>Remove</button>
 		</div>
 	);

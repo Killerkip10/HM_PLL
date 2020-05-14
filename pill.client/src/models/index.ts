@@ -1,1 +1,2 @@
-export * from './symptoms';
+export * from './symptom';
+export * from './illness';

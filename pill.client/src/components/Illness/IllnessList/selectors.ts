@@ -6,5 +6,15 @@ const getIllnessList = (state: IStore) => state.illness.illnessList;
 
 export const getSymptomsListSelector = createSelector(
 	getIllnessList,
-	illness => illness.symptomsList,
+	illnessList => illnessList.symptomsList,
+);
+
+export const getNormalizedSymptomsListSelector = createSelector(
+	getSymptomsListSelector,
+	symptomsList => [{ id: null }, ...symptomsList],
+);
+
+export const getIllnessesListSelector = createSelector(
+	getIllnessList,
+	illnessList => illnessList.illnessesList,
 );

@@ -6,19 +6,16 @@ import { Get } from '../../../../../app/user';
 export default (getUseCase: Get) => {
 	const router = Router();
 
-	router.post('/login', (req, res) => {
-		console.log(req.body);
-		getUseCase
-				.byCredentials(req.body.email, req.body.password)
-				.then((data) => {
-					if (data) {
-						req.session.profile = data;
-						res.send();
-					} else {
-						res.status(BAD_REQUEST).send();
-					}
-				});
-		},
+	router.post('/login', (req, res) => getUseCase
+		.byCredentials(req.body.email, req.body.password)
+		.then((data) => {
+			if (data) {
+				req.session.profile = data;
+				res.send();
+			} else {
+				res.status(BAD_REQUEST).send();
+			}
+		}),
 	);
 
 	// router.post('/registration', (req, res) => createUseCase

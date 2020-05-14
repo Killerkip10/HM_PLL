@@ -9,6 +9,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 module.exports = {
 	entry: './src/index.tsx',
 	output: {
+		publicPath: '/',
 		path: path.join(__dirname, 'build'),
 		filename: isDev ? '[name].js' : '[name]-[chunkhash].js',
 	},
@@ -23,8 +24,9 @@ module.exports = {
 	devtool: isDev ? 'inline-source-map' : false,
 	devServer: {
 		port: 3030,
+		historyApiFallback: true,
 		proxy: {
-			'/api': 'http://localhost:3000',
+			'/api': 'http://localhost:3000/',
 		}
 	},
 	module: {

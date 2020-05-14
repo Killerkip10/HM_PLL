@@ -8,4 +8,16 @@ export class Get {
   public all() {
     return this.userRepository.getAll();
   }
+
+  public byId(id: number) {
+		return this.userRepository.getById(id);
+	}
+
+  public bySymptomIds(ids: number[]) {
+		if (!ids || !ids.length) {
+			return Promise.reject();
+		}
+
+		return this.userRepository.getBySymptomIds(ids);
+	}
 }
