@@ -10,7 +10,7 @@ export default (
 ) => {
   const router = Router();
 
-  router.get('/', isAuthorized, (req, res) => getUseCase
+  router.get('/', isAuthorized, (_, res) => getUseCase
     .all()
     .then(data => res.send(data)),
   );
