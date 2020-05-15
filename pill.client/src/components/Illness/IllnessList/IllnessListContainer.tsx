@@ -7,7 +7,7 @@ import { getNormalizedSymptomsListSelector, getIllnessesListSelector } from './s
 
 export const IllnessListContainerComponent = ({ symptomsList, illnessesList, getSymptoms, getIllnessesBySymptomIds }) => {
 	useEffect(() => {
-		getSymptoms()
+		getSymptoms();
 	}, []);
 
 	const handleIllnessesFilter = useCallback((ids: number[]) => getIllnessesBySymptomIds(ids), [getIllnessesBySymptomIds]);
