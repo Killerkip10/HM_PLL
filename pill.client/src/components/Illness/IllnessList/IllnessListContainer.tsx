@@ -26,10 +26,10 @@ const mapStateToProps = state => ({
 	illnessesList: getIllnessesListSelector(state),
 });
 
-const mapDispatchToProps = ({
+const mapDispatchToProps = {
 	getSymptoms: getSymptomsAction,
 	getIllnessesBySymptomIds: getIllnessesBySymptomIdsAction,
-});
+};
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 

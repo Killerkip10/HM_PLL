@@ -8,7 +8,7 @@ export const HeaderComponent = ({ history }) => {
 		<>
 			<button onClick={() => history.push(ROUTE.LOGIN)}>Login</button>
 			<button onClick={() => history.push(ROUTE.REGISTRATION)}>Registration</button>
-			<button onClick={() => history.push(ROUTE.ILLNESSES)}>Illnesses</button>
+			<button onClick={() => history.push(ROUTE.ILLNESS)}>Illnesses</button>
 		</>
 	);
 };

@@ -10,7 +10,7 @@ interface IProps {
 
 export const IllnessListTableItemComponent = ({ id, name, description }: IProps) => (
 	<>
-		<a href={`${ROUTE.ILLNESSES_DETAILS}/${id}`} target="_blank">{name}</a>
+		<a href={`${ROUTE.ILLNESS_DETAILS}/${id}`} target="_blank">{name}</a>
 		<div>{description}</div>
 	</>
 );

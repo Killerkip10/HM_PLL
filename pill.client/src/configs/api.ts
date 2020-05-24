@@ -5,4 +5,6 @@ export const PATH = {
 	ILLNESS: '/api/v1/illness',
 	ILLNESS_SYMPTOMS: '/api/v1/illness/symptoms',
 	SYMPTOM: '/api/v1/symptom',
+	MEDICINE: '/api/v1/medicine',
+	RECOMMENDATION: '/api/v1/recommendation',
 };

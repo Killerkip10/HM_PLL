@@ -29,7 +29,7 @@ export class IllnessRepository {
   }
 
   public getById(id: number) {
-		return Illness.findAll({
+		return Illness.findOne({
 			where: { id },
 			include: [
 				{

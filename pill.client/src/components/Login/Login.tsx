@@ -13,7 +13,7 @@ export const LoginComponent = ({ handleSubmit, history }) => {
 
 	const handleSubmitForm = useCallback((value) => {
 		 http.post(PATH.LOGIN, value)
-			 .then(() => history.push(ROUTE.ILLNESSES))
+			 .then(() => history.push(ROUTE.ILLNESS))
 			 .catch(() => setError('Wrong email or password'));
 	}, []);
 

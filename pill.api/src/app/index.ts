@@ -2,6 +2,7 @@ import { user, IUser } from './user';
 import { illness, IIllness } from './illness';
 import { medicine, IMedicine } from './medicine';
 import { symptom, ISymptom } from './symptom';
+import { recommendation, IRecommendation } from './recommendation';
 
 export interface IApp {
   start: () => void;
@@ -12,12 +13,13 @@ export interface IMethods {
   illness: IIllness;
   medicine: IMedicine;
   symptom: ISymptom;
+  recommendation: IRecommendation;
 }
 
 export const app = ({ server, database }): IApp => ({
-    start: () => Promise.resolve()
-      .then(database.connect)
-      .then(server.start),
+	start: () => Promise.resolve()
+		.then(database.connect)
+		.then(server.start),
 });
 
 export const methods = (): IMethods => ({
@@ -25,4 +27,5 @@ export const methods = (): IMethods => ({
   illness,
   medicine,
 	symptom,
+	recommendation,
 });

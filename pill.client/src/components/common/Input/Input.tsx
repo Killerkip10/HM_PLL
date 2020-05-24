@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export const Input = ({ meta: { touched, error }, ...props }) => (
+export const Input = memo(({ touched, error, ...props }) => (
 	<div>
 		<input {...props} />
 		{touched && error}
 	</div>
-);
+));

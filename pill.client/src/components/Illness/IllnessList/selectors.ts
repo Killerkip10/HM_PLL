@@ -11,7 +11,7 @@ export const getSymptomsListSelector = createSelector(
 
 export const getNormalizedSymptomsListSelector = createSelector(
 	getSymptomsListSelector,
-	symptomsList => [{ id: null }, ...symptomsList],
+	symptomsList => [{ id: '' }, ...symptomsList],
 );
 
 export const getIllnessesListSelector = createSelector(

@@ -23,12 +23,9 @@ export const ProfileComponent = ({ children, location, isFetching, firstName, ge
 		}
 	}, [location]);
 
-	if (isFetching) {
-		return 'LOADER';
-	}
-
 	return (
 		<>
+			{isFetching && <div>Loader</div>}
 			{children}
 		</>
 	);
