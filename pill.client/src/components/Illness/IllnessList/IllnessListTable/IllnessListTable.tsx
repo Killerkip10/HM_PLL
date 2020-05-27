@@ -9,7 +9,7 @@ interface IProps {
 }
 
 export const IllnessListTableComponent = ({ illnesses }: IProps) => (
-	illnesses.map(({ id, name, description }) => <IllnessListTableItem key={id} id={id} name={name} description={description} />)
+	illnesses.map(({ id, name }) => <IllnessListTableItem key={id} id={id} name={name} />)
 );
 
 export const IllnessListTable = memo(IllnessListTableComponent);

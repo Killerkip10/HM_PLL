@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
+import { TextEditor } from 'components/common/TextEditor';
 import { IMedicine, IRecommendation, ISymptom } from 'models';
 
 interface IProps {
@@ -12,11 +13,13 @@ interface IProps {
 }
 
 export const IllnessDetailsComponent = ({ name, description, symptoms = [], recommendations = [], medicines = [], updatedAt }: IProps) => {
+	const textEditorConfig = useMemo(() => ({ readonly: true, toolbar: false, showXPathInStatusbar: false, showWordsCounter: false, showCharsCounter: false }), []);
+
 	return (
 		<div>
 			<h1>{name}</h1>
 
-			<div>{description}</div>
+			<TextEditor value={description} config={textEditorConfig} />
 
 			<h3>Symptoms</h3>
 			<ul>

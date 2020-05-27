@@ -20,7 +20,7 @@ type ThunkResult<T> = ThunkAction<T, IStore, undefined, Actions>;
 export const getSymptomsAction = (): ThunkResult<void> => (dispatch) => {
 	dispatch(getSymptomsRequestAction());
 
-	return http.get<ISymptom[]>(PATH.SYMPTOM)
+	return http.get<ISymptom[]>(PATH.SYMPTOM_SHORT)
 		.then(data => dispatch(getSymptomsSuccessAction(data)))
 		.catch(() => dispatch(getSymptomsFailureAction()));
 };

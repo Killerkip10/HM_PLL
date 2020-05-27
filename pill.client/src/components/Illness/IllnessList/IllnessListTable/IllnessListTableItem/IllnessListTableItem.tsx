@@ -9,10 +9,9 @@ interface IProps {
 }
 
 export const IllnessListTableItemComponent = ({ id, name, description }: IProps) => (
-	<>
+	<div>
 		<a href={`${ROUTE.ILLNESS_DETAILS}/${id}`} target="_blank">{name}</a>
-		<div>{description}</div>
-	</>
+	</div>
 );
 
 export const IllnessListTableItem = memo(IllnessListTableItemComponent);

@@ -5,6 +5,7 @@ import { ROUTE } from 'configs';
 import { Login } from 'components/Login';
 import { Registration } from 'components/Registration';
 import { IllnessListContainer, IllnessDetailsContainer, IllnessCreateContainer } from 'components/Illness';
+import { SymptomManageContainer } from 'components/Symptom';
 
 export const Router = () => (
 	<Switch>
@@ -14,5 +15,6 @@ export const Router = () => (
 		<Route exact path={ROUTE.ILLNESS} component={IllnessListContainer} />
 		<Route exact path={`${ROUTE.ILLNESS_DETAILS}/:id`} component={IllnessDetailsContainer} />
 		<Route exact path={ROUTE.ILLNESS_CREATE} component={IllnessCreateContainer} />
+		<Route exact path={ROUTE.SYMPTOM_MANAGE} component={SymptomManageContainer} />
 	</Switch>
 );

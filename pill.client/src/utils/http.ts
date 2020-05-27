@@ -31,8 +31,26 @@ const get = <T>(path: string, params: { [key: string]: string | number } = {}): 
 		.catch(handleError);
 };
 
-const post = (path: string, body: object) => fetch(path, {
+const post = <T>(path: string, body: object): Promise<T> => fetch(path, {
 	method: 'POST',
+	body: JSON.stringify(body),
+	...commonOptions,
+
+})
+	.then(handleResponse)
+	.catch(handleError);
+
+const put = <T>(path: string, body: object): Promise<T> => fetch(path, {
+	method: 'PUT',
+	body: JSON.stringify(body),
+	...commonOptions,
+
+})
+	.then(handleResponse)
+	.catch(handleError);
+
+const delete = <T>(path: string, body: object): Promise<T> => fetch(path, {
+	method: 'DELETE',
 	body: JSON.stringify(body),
 	...commonOptions,
 
@@ -43,4 +61,6 @@ const post = (path: string, body: object) => fetch(path, {
 export const http = {
 	get,
 	post,
+	put,
+	delete,
 };

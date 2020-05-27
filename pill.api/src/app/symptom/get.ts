@@ -5,7 +5,11 @@ export class Get {
 		private symptomRepository: SymptomRepository,
 	) { }
 
-	public all() {
-		return this.symptomRepository.getAll();
+	public all(query: object) {
+		return this.symptomRepository.getAll(query);
+	}
+
+	public allShort() {
+		return this.symptomRepository.getAllShort();
 	}
 }

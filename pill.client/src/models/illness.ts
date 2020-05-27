@@ -14,3 +14,9 @@ export interface IIllness extends IIllnessShort {
 	medicines: IMedicine[];
 	recommendations: IRecommendation[];
 }
+
+export interface ICreateIllness extends IIllnessShort {
+	symptomsIds: number[];
+	medicinesIds: number[];
+	symptomsIds: number[];
+}

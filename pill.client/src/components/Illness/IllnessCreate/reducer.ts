@@ -6,6 +6,9 @@ import {
 	GET_MEDICINES_SUCCESS,
 	GET_RECOMMENDATIONS_SUCCESS,
 	CHANGE_IS_FETCHING,
+	CREATE_ILLNESS_REQUEST,
+	CREATE_ILLNESS_SUCCESS,
+	CREATE_ILLNESS_FAILURE,
 } from './actions';
 
 export interface IIllnessCreateState {
@@ -28,6 +31,9 @@ export const illnessCreate = (state: IIllnessCreateState = initialState, { type,
 		case GET_MEDICINES_SUCCESS:
 		case GET_RECOMMENDATIONS_SUCCESS:
 		case CHANGE_IS_FETCHING:
+		case CREATE_ILLNESS_REQUEST:
+		case CREATE_ILLNESS_SUCCESS:
+		case CREATE_ILLNESS_FAILURE:
 			return {
 				...state,
 				...payload,

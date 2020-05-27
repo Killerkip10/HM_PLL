@@ -13,3 +13,13 @@ export const getFirstNameSelector = createSelector(
 	getProfile,
 	profile => profile.firstName,
 );
+
+export const getLastNameSelector = createSelector(
+	getProfile,
+	profile => profile.lastName,
+);
+
+export const getRoleSelector = createSelector(
+	getProfile,
+	profile => profile.role,
+);

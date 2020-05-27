@@ -113,7 +113,7 @@ module.exports = {
         table: 'Illnesses',
         field: 'id',
       },
-      onDelete: 'no action',
+      onDelete: 'cascade',
       onUpdate: 'cascade',
     });
 
@@ -124,7 +124,7 @@ module.exports = {
         table: 'Symptoms',
         field: 'id',
       },
-      onDelete: 'no action',
+      onDelete: 'cascade',
       onUpdate: 'cascade',
     });
     //

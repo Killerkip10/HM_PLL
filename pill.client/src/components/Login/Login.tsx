@@ -25,6 +25,7 @@ export const LoginComponent = ({ handleSubmit, history }) => {
 			/>
 			<RFields.Input
 				name={FORM_FIELDS.PASSWORD}
+				type="password"
 				validate={[requiredValidator]}
 			/>
 			<button type="submit">Login</button>

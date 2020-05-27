@@ -10,10 +10,11 @@ export default (
 ) => {
   const router = Router();
 
-  router.get('/', isAuthorized, (_, res) => getUseCase
-    .all()
-    .then(data => res.send(data)),
-  );
+  router.get('/', isAuthorized, (req, res) => getUseCase
+		.all(req.query)
+		.then(data => res.send(data))
+		.catch(error => res.status(BAD_REQUEST).send(error)),
+	);
 
 	router.get('/symptoms', isAuthorized, (req, res) => getUseCase
 		.bySymptomIds(req.query.ids)

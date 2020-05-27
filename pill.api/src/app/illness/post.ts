@@ -1,7 +1,7 @@
 import { PathReporter } from 'io-ts/lib/PathReporter';
 import { isLeft } from 'fp-ts/lib/Either';
 
-import { IIllness, Illness } from '../../domain';
+import { IIllness, CreateIllness } from '../../domain';
 import { IllnessRepository } from '../../infra/repositories';
 
 export class Post {
@@ -10,7 +10,7 @@ export class Post {
   ) { }
 
   public create(illness: IIllness) {
-    const entity = Illness.decode(illness);
+    const entity = CreateIllness.decode(illness);
 
     if (isLeft(entity)) {
       return Promise.reject(PathReporter.report(entity));

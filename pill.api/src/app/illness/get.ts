@@ -2,15 +2,15 @@ import { IllnessRepository } from '../../infra/repositories';
 
 export class Get {
   public constructor(
-    private userRepository: IllnessRepository,
+    private illnessRepository: IllnessRepository,
   ) { }
 
-  public all() {
-    return this.userRepository.getAll();
-  }
+  public all(query: object) {
+  	return this.illnessRepository.getAll(query);
+	}
 
   public byId(id: number) {
-		return this.userRepository.getById(id);
+		return this.illnessRepository.getById(id);
 	}
 
   public bySymptomIds(ids: number[]) {
@@ -18,6 +18,6 @@ export class Get {
 			return Promise.reject();
 		}
 
-		return this.userRepository.getBySymptomIds(ids);
+		return this.illnessRepository.getBySymptomIds(ids);
 	}
 }

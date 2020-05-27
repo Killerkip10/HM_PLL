@@ -2,10 +2,9 @@ import React, { useCallback } from 'react';
 import { reduxForm } from 'redux-form';
 
 import { RFields } from 'components/common/RFields';
-import { TextEditor } from 'components/common/Editor';
-import { requiredValidator } from 'utils';
 
 import { FORM_NAME, FORM_FIELDS } from './constants';
+import { validate, asyncValidate } from './validators';
 
 export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medicines, recommendations }) => {
 	const handleAddSymptom = useCallback(() => array.push(FORM_FIELDS.SYMPTOMS, ''), [array]);
@@ -16,17 +15,20 @@ export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medi
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<h3>Name</h3>
+
 			<RFields.Input
 				name={FORM_FIELDS.NAME}
-				validate={[requiredValidator]}
+				placeholder="Name"
 			/>
 
-			<TextEditor />
+			<h3>Description</h3>
 
-			<RFields.Input
+			<RFields.TextEditor
 				name={FORM_FIELDS.DESCRIPTION}
-				validate={[requiredValidator]}
 			/>
+
+			<h3>Symptoms</h3>
 
 			<RFields.ArraySelect
 				name={FORM_FIELDS.SYMPTOMS}
@@ -35,12 +37,16 @@ export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medi
 
 			<button type="button" onClick={handleAddSymptom}>Add symptom</button>
 
+			<h3>Medicines</h3>
+
 			<RFields.ArraySelect
 				name={FORM_FIELDS.MEDICINES}
 				data={medicines}
 			/>
 
 			<button type="button" onClick={handleAddMedicine}>Add medicine</button>
+
+			<h3>Recommendations</h3>
 
 			<RFields.ArraySelect
 				name={FORM_FIELDS.RECOMMENDATIONS}
@@ -54,6 +60,11 @@ export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medi
 
 const formCreator = reduxForm({
   form: FORM_NAME,
+	validate,
+	asyncValidate,
+	asyncChangeFields: [FORM_FIELDS.NAME],
+	enableReinitialize: true,
+	destroyOnUnmount: false,
 	initialValues: {
   	[FORM_FIELDS.NAME]: '',
 		[FORM_FIELDS.DESCRIPTION]: '',
