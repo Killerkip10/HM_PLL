@@ -15,3 +15,5 @@ export const deleteCookie = (name: string): void => {
 export const isUserAuthorized = (): boolean => Boolean(getCookie(AUTH_COOKIE));
 
 export const resetUserAuthorization = (): void => deleteCookie(AUTH_COOKIE);
+
+export const isAllowed = (roleId: number, roles: number[]): boolean => roles.some(r => r === roleId);

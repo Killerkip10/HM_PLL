@@ -12,7 +12,6 @@ export const App = memo(() => (
 	<>
 		<Header />
 		<Router />
-		<footer>Footer</footer>
 	</>
 ));
 

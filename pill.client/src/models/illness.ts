@@ -5,10 +5,13 @@ import { IRecommendation } from './recommendation';
 export interface IIllnessShort {
 	id: number;
 	name: string;
-	description: string;
+	rating?: number;
+	updatedAt?: string;
+	createdAt?: string;
 }
 
 export interface IIllness extends IIllnessShort {
+	description: string;
 	updatedAt: string;
 	symptoms: ISymptom[];
 	medicines: IMedicine[];

@@ -7,6 +7,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Icon from '@material-ui/core/Icon';
 
+import { isAllowed } from 'utils';
 import { ROUTE, ROLE } from 'configs';
 import { getFirstNameSelector, getLastNameSelector, getRoleSelector } from 'components/Profile';
 
@@ -89,19 +90,13 @@ export const HeaderComponent = ({ history, classes = {}, firstName, lastName, ro
 					<div>Home treatment</div>
 				</div>
 
-				<div className={classes.headerButton} data-menu-id={MENU_ID.ILLNESS} onClick={handleClick}>Illnesses</div>
+				{isAllowed(role, [ROLE.USER, ROLE.ADMIN]) &&
+					<div className={classes.headerButton} data-route={ROUTE.ILLNESS} onClick={handleMenuItemClick}>Search illnesses</div>
+				}
 
-				<div className={classes.headerButton} data-menu-id={MENU_ID.SYMPTOM} onClick={handleClick}>Symptoms</div>
-
-				<Menu
-					anchorEl={anchorEl}
-					keepMounted
-					open={menuId === MENU_ID.ILLNESS}
-					onClose={handleClose}
-				>
-					<MenuItem data-route={ROUTE.ILLNESS} onClick={handleMenuItemClick}>Search illness</MenuItem>
-					<MenuItem data-route={ROUTE.ILLNESS_CREATE} onClick={handleMenuItemClick}>Create illness</MenuItem>
-				</Menu>
+				{isAllowed(role, [ROLE.ADMIN]) &&
+					<div className={classes.headerButton} data-menu-id={MENU_ID.SYMPTOM} onClick={handleClick}>Management</div>
+				}
 
 				<Menu
 					anchorEl={anchorEl}
@@ -109,6 +104,8 @@ export const HeaderComponent = ({ history, classes = {}, firstName, lastName, ro
 					open={menuId === MENU_ID.SYMPTOM}
 					onClose={handleClose}
 				>
+					<MenuItem data-route={ROUTE.ILLNESS_CREATE} onClick={handleMenuItemClick}>Create illness</MenuItem>
+					<MenuItem data-route={ROUTE.ILLNESS_MANAGE} onClick={handleMenuItemClick}>Manage illness</MenuItem>
 					<MenuItem data-route={ROUTE.SYMPTOM_MANAGE} onClick={handleMenuItemClick}>Manage symptoms</MenuItem>
 				</Menu>
 			</div>

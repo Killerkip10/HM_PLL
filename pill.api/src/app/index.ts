@@ -3,6 +3,7 @@ import { illness, IIllness } from './illness';
 import { medicine, IMedicine } from './medicine';
 import { symptom, ISymptom } from './symptom';
 import { recommendation, IRecommendation } from './recommendation';
+import { illnessReview, IIllnessReview } from './illnessReview';
 
 export interface IApp {
   start: () => void;
@@ -14,6 +15,7 @@ export interface IMethods {
   medicine: IMedicine;
   symptom: ISymptom;
   recommendation: IRecommendation;
+  illnessReview: IIllnessReview;
 }
 
 export const app = ({ server, database }): IApp => ({
@@ -28,4 +30,5 @@ export const methods = (): IMethods => ({
   medicine,
 	symptom,
 	recommendation,
+	illnessReview,
 });

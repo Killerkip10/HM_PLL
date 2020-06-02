@@ -9,6 +9,7 @@ import { ProductionMedicineMethod } from '../models/ProductionMedicineMethod';
 import { MedicineConflict } from '../models/MedicineConflict';
 import { MedicineGroup } from '../models/MedicineGroup';
 import { MedicineGroupConflict } from '../models/MedicineGroupConflict';
+import { Illness } from '../models/Illness';
 
 export class MedicineRepository {
   public getAll() {
@@ -30,6 +31,17 @@ export class MedicineRepository {
       ],
     });
   }
+
+  public getAllByIllnessId(illnessId: number) {
+  	return Medicine.findAll({
+			attributes: ['id', 'name'],
+			include: {
+				model: Illness,
+				where: { id: illnessId },
+				attributes: [],
+			},
+		});
+	}
 
   public create(medicine: IMedicine) {
     return Medicine.create(medicine);

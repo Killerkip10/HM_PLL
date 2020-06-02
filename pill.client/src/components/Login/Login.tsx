@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 import { flowRight } from 'lodash';
 
 import { RFields } from 'components/common/RFields';
+import { Button } from 'components/common/Button';
 import { http, requiredValidator, emailValidator } from 'utils';
 import { PATH, ROUTE } from 'configs';
 
@@ -28,7 +29,7 @@ export const LoginComponent = ({ handleSubmit, history }) => {
 				type="password"
 				validate={[requiredValidator]}
 			/>
-			<button type="submit">Login</button>
+			<Button type="submit">Login</Button>
 			{error}
     </form>
   );

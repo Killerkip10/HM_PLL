@@ -7,10 +7,22 @@ import { Recommendation } from '../models/Recommendation';
 import { IllnessSymptom } from '../models/IllnessSymptom';
 import { IllnessMedicine } from '../models/IllnessMedicine';
 import { IllnessRecommendation } from '../models/IllnessRecommendation';
+import { IllnessReview } from '../models/IllnessReview';
+import { IllnessReviewMedicine } from '../models/IllnessReviewMedicine';
+
+import { getAverageRating } from '../utils';
 
 export class IllnessRepository {
 	public getAll(query: object) {
 		return Illness.findAll({ where: query });
+	}
+
+	public getAllShort() {
+		return Illness.findAll({
+			attributes: {
+				exclude: ['description'],
+			},
+		});
 	}
 
   public getById(id: number) {
@@ -32,12 +44,18 @@ export class IllnessRepository {
 					attributes: { exclude: [...DATE_ATTRIBUTES_EXCLUDE, 'typeMedicineId', 'routeId', 'productionMedicineMethodId'] },
 					through: { attributes: [] },
 				},
+				{
+					model: IllnessReview,
+					include: [{
+						model: IllnessReviewMedicine,
+					}],
+				},
 			],
 		});
 	}
 
-  public getBySymptomIds(ids: number[]) {
-		return Illness.findAll({
+  public async getBySymptomIds(ids: number[]) {
+		const illnesses = await Illness.findAll({
 			attributes: { exclude: DATE_ATTRIBUTES_EXCLUDE },
 			include: [
 				{
@@ -45,8 +63,20 @@ export class IllnessRepository {
 					where: { id: ids },
 					attributes: [],
 				},
+				{
+					model: IllnessReview,
+					include: [{
+						model: IllnessReviewMedicine,
+					}],
+				},
 			],
 		});
+
+		return illnesses.map(({ id, name, reviews }) => ({
+			id,
+			name,
+			rating: getAverageRating(reviews),
+		}));
 	}
 
   public async create(illness: ICreateIllness) {
@@ -58,4 +88,8 @@ export class IllnessRepository {
 			IllnessRecommendation.bulkCreate(illness.recommendationsIds.map(recommendationId => ({ recommendationId, illnessId }))),
 		]);
   }
+
+  public delete(id: number) {
+		return Illness.destroy({ where: { id } });
+	}
 }

@@ -1,12 +1,23 @@
 import React, { useCallback } from 'react';
 import { reduxForm } from 'redux-form';
+import { withStyles } from '@material-ui/core';
 
 import { RFields } from 'components/common/RFields';
+import { Button } from 'components/common/Button';
 
 import { validate } from './validators';
 import { FORM_NAME, FORM_FIELDS } from './constants';
 
-export const IllnessListFilterComponent = ({ handleSubmit, array, symptoms, error, submitFailed }) => {
+const styles = () => ({
+	select: {
+		width: '200px',
+	},
+	submitButton: {
+		marginRight: '10px',
+	}
+});
+
+export const IllnessListFilterComponent = ({ handleSubmit, array, symptoms, error, submitFailed, classes }) => {
 	const handleAddSymptom = useCallback(() => array.push(FORM_FIELDS.SYMPTOMS, ''), [array]);
 	
 	return (
@@ -14,11 +25,12 @@ export const IllnessListFilterComponent = ({ handleSubmit, array, symptoms, erro
 			<RFields.ArraySelect
 				name={FORM_FIELDS.SYMPTOMS}
 				data={symptoms}
+				className={classes.select}
 			/>
 
-			<button type="button" onClick={handleAddSymptom}>Add symptom</button>
 			<div>{submitFailed && error}</div>
-			<button type="submit">Submit</button>
+			<Button className={classes.submitButton} type="submit">Submit</Button>
+			<Button color="secondary" type="button" onClick={handleAddSymptom}>Add symptom</Button>
 		</form>
 	);
 };
@@ -31,4 +43,4 @@ const formCreator = reduxForm({
 	},
 });
 
-export const IllnessListFilter = formCreator(IllnessListFilterComponent);
+export const IllnessListFilter = withStyles(styles)(formCreator(IllnessListFilterComponent));

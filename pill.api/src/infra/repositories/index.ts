@@ -3,6 +3,7 @@ import { IllnessRepository } from './illness';
 import { MedicineRepository } from './medicine';
 import { SymptomRepository } from './symptom';
 import { RecommendationRepository } from './recommendation';
+import { IllnessReviewRepository } from './illnessReview';
 
 interface IRepository {
   userRepository: UserRepository;
@@ -10,6 +11,7 @@ interface IRepository {
   medicineRepository: MedicineRepository;
   symptomRepository: SymptomRepository;
   recommendationRepository: RecommendationRepository;
+  illnessReviewRepository: IllnessReviewRepository,
 }
 
 const repository = (): IRepository => ({
@@ -18,6 +20,7 @@ const repository = (): IRepository => ({
   medicineRepository: new MedicineRepository(),
 	symptomRepository: new SymptomRepository(),
 	recommendationRepository: new RecommendationRepository(),
+	illnessReviewRepository: new IllnessReviewRepository(),
 });
 
 export {
@@ -28,4 +31,5 @@ export {
   MedicineRepository,
 	SymptomRepository,
 	RecommendationRepository,
+	IllnessReviewRepository,
 };

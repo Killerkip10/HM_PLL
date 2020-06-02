@@ -136,7 +136,7 @@ module.exports = {
         table: 'Illnesses',
         field: 'id',
       },
-      onDelete: 'no action',
+      onDelete: 'cascade',
       onUpdate: 'cascade',
     });
 
@@ -159,7 +159,7 @@ module.exports = {
         table: 'Illnesses',
         field: 'id',
       },
-      onDelete: 'no action',
+      onDelete: 'cascade',
       onUpdate: 'cascade',
     });
 
@@ -173,6 +173,41 @@ module.exports = {
       onDelete: 'no action',
       onUpdate: 'cascade',
     });
+		//
+		// ############################### IllnessReviews ###############################
+		await queryInterface.addConstraint('IllnessReviews', ['illnessId'],{
+			type: 'FOREIGN KEY',
+			name: 'IllnessReviews_1',
+			references: {
+				table: 'Illnesses',
+				field: 'id',
+			},
+			onDelete: 'cascade',
+			onUpdate: 'cascade',
+		});
+		//
+		// ############################### IllnessReviewMedicines ###############################
+		await queryInterface.addConstraint('IllnessReviewMedicines', ['illnessReviewId'],{
+			type: 'FOREIGN KEY',
+			name: 'IllnessReviewMedicines_1',
+			references: {
+				table: 'IllnessReviews',
+				field: 'id',
+			},
+			onDelete: 'cascade',
+			onUpdate: 'cascade',
+		});
+
+		await queryInterface.addConstraint('IllnessReviewMedicines', ['medicineId'],{
+			type: 'FOREIGN KEY',
+			name: 'IllnessReviewMedicines_2',
+			references: {
+				table: 'Medicines',
+				field: 'id',
+			},
+			onDelete: 'cascade',
+			onUpdate: 'cascade',
+		});
   },
 
   down: async (queryInterface) => {
@@ -197,5 +232,10 @@ module.exports = {
 
     await queryInterface.removeConstraint('MedicineGroupConflicts', 'MedicineGroupConflicts_1');
     await queryInterface.removeConstraint('MedicineGroupConflicts', 'MedicineGroupConflicts_2');
+
+		await queryInterface.removeConstraint('IllnessReviews', 'IllnessReviews_1');
+
+		await queryInterface.removeConstraint('IllnessReviewMedicines', 'IllnessReviewMedicines_1');
+		await queryInterface.removeConstraint('IllnessReviewMedicines', 'IllnessReviewMedicines_2');
   },
 };

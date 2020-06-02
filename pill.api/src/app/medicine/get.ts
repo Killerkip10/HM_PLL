@@ -9,6 +9,10 @@ export class Get {
     return this.medicineRepository.getAll();
   }
 
+  public byIllnessId(illnessId: number) {
+  	return this.medicineRepository.getAllByIllnessId(illnessId);
+	}
+
   public conflicts() {
     return this.medicineRepository.getMedicineConflicts([2, 4]);
   }

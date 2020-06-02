@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import { reduxForm } from 'redux-form';
 
 import { RFields } from 'components/common/RFields';
+import { Button } from 'components/common/Button';
+import { numberNormalizer } from 'utils';
 
 import { FORM_NAME, FORM_FIELDS } from './constants';
 import { validate, asyncValidate } from './validators';
@@ -33,27 +35,30 @@ export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medi
 			<RFields.ArraySelect
 				name={FORM_FIELDS.SYMPTOMS}
 				data={symptoms}
+				normalize={numberNormalizer}
 			/>
 
-			<button type="button" onClick={handleAddSymptom}>Add symptom</button>
+			<Button type="button" color="secondary" onClick={handleAddSymptom}>Add symptom</Button>
 
 			<h3>Medicines</h3>
 
 			<RFields.ArraySelect
 				name={FORM_FIELDS.MEDICINES}
 				data={medicines}
+				normalize={numberNormalizer}
 			/>
 
-			<button type="button" onClick={handleAddMedicine}>Add medicine</button>
+			<Button type="button" color="secondary" onClick={handleAddMedicine}>Add medicine</Button>
 
 			<h3>Recommendations</h3>
 
 			<RFields.ArraySelect
 				name={FORM_FIELDS.RECOMMENDATIONS}
 				data={recommendations}
+				normalize={numberNormalizer}
 			/>
 
-			<button type="button" onClick={handleAddRecommendation}>Add recommendation</button>
+			<Button type="button" color="secondary" onClick={handleAddRecommendation}>Add recommendation</Button>
 		</form>
 	);
 };

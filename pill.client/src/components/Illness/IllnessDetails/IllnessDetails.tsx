@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from 'react';
 
 import { TextEditor } from 'components/common/TextEditor';
+import { Button } from 'components/common/Button';
 import { IMedicine, IRecommendation, ISymptom } from 'models';
 
 interface IProps {
@@ -12,7 +13,7 @@ interface IProps {
 	symptoms: ISymptom[];
 }
 
-export const IllnessDetailsComponent = ({ name, description, symptoms = [], recommendations = [], medicines = [], updatedAt }: IProps) => {
+export const IllnessDetailsComponent = ({ name, description, symptoms = [], recommendations = [], medicines = [], updatedAt, onLeaveFeedback }: IProps) => {
 	const textEditorConfig = useMemo(() => ({ readonly: true, toolbar: false, showXPathInStatusbar: false, showWordsCounter: false, showCharsCounter: false }), []);
 
 	return (
@@ -37,6 +38,8 @@ export const IllnessDetailsComponent = ({ name, description, symptoms = [], reco
 			</ul>
 
 			<div>{updatedAt}</div>
+
+			<Button color="secondary" onClick={onLeaveFeedback}>Leave feedback</Button>
 		</div>
 	);
 };

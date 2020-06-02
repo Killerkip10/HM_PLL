@@ -25,7 +25,7 @@ export const ProfileComponent = ({ children, location, isFetching, firstName, ge
 
 	return (
 		<>
-			{isFetching && <div>Loader</div>}
+			{/*{isFetching && <div>Loader</div>}*/}
 			{children}
 		</>
 	);

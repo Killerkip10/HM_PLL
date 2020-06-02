@@ -26,5 +26,10 @@ export default (
     .then(data => res.send(data)),
   );
 
+	router.get('/illness/:id', isAuthorized, (req, res) => getUseCase
+		.byIllnessId(req.params.id)
+		.then(data => res.send(data)),
+	);
+
   return router;
 };

@@ -9,6 +9,10 @@ export class Get {
   	return this.illnessRepository.getAll(query);
 	}
 
+	public allShort() {
+  	return this.illnessRepository.getAllShort();
+	}
+
   public byId(id: number) {
 		return this.illnessRepository.getById(id);
 	}

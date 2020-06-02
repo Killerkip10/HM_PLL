@@ -7,3 +7,5 @@ export * from './productionMedicineMethod';
 export * from './symptom';
 export * from './group';
 export * from './recommendation';
+export * from './illnessReview';
+export * from './illnessReviewMedicine';

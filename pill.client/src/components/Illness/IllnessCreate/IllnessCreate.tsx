@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { IllnessCreateForm } from 'components/common/forms';
+import { Button } from 'components/common/Button';
 
 export const IllnessCreateComponent = ({ symptoms, medicines, recommendations, onSubmitForm, onCreateIllness }) => (
 	<div>
@@ -10,7 +11,7 @@ export const IllnessCreateComponent = ({ symptoms, medicines, recommendations, o
 			recommendations={recommendations}
 			onSubmit={onCreateIllness}
 		/>
-		<button onClick={onSubmitForm}>Create illness</button>
+		<Button onClick={onSubmitForm}>Create illness</Button>
 	</div>
 );
 

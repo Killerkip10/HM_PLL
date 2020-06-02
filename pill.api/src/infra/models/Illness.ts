@@ -10,6 +10,7 @@ import {
   AutoIncrement,
   Unique,
   BelongsToMany,
+	HasMany,
 } from 'sequelize-typescript';
 
 import { IIllness } from '../../domain';
@@ -19,6 +20,7 @@ import { IllnessRecommendation } from './IllnessRecommendation';
 import { Symptom } from './Symptom';
 import { Medicine } from './Medicine';
 import { Recommendation } from './Recommendation';
+import { IllnessReview } from './IllnessReview';
 
 @Table
 export class Illness extends Model<Illness> implements IIllness {
@@ -46,6 +48,9 @@ export class Illness extends Model<Illness> implements IIllness {
 
   @BelongsToMany(() => Recommendation, () => IllnessRecommendation)
   public recommendations: Recommendation[];
+
+  @HasMany(() => IllnessReview)
+	public reviews: IllnessReview[];
 
   @CreatedAt
   @Column

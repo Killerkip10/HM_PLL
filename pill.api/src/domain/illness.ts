@@ -10,9 +10,9 @@ const PartialIllness = t.partial({
 });
 
 const ExactCreateIllness = t.type({
-	symptomsIds: t.array(t.string),
-	medicinesIds: t.array(t.string),
-	recommendationsIds: t.array(t.string),
+	symptomsIds: t.array(t.number),
+	medicinesIds: t.array(t.number),
+	recommendationsIds: t.array(t.number),
 });
 
 export const Illness = t.intersection([ExactIllness, PartialIllness]);

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import { IIllness } from 'models';
+import { ROUTE } from 'configs';
 
 import { IllnessDetails } from './IllnessDetails';
 import { getIllnessDetailsAction } from './epicActions';
@@ -13,10 +14,12 @@ interface IProps {
 	getIllnessDetails: any;
 }
 
-export const IllnessDetailsContainerComponent = ({ match: { params: { id } }, illnessInfo, getIllnessDetails }: IProps) => {
+export const IllnessDetailsContainerComponent = ({ match: { params: { id } }, history, illnessInfo, getIllnessDetails }: IProps) => {
 	useEffect(() => {
 		getIllnessDetails(id);
 	}, []);
+
+	const handleLeaveFeedback = useCallback(() => history.push(`${ROUTE.ILLNESS_REVIEW_CREATE}/${id}`), [history, id]);
 
 	return (
 		<IllnessDetails
@@ -26,6 +29,7 @@ export const IllnessDetailsContainerComponent = ({ match: { params: { id } }, il
 			medicines={illnessInfo.medicines}
 			recommendations={illnessInfo.recommendations}
 			updatedAt={illnessInfo.updatedAt}
+			onLeaveFeedback={handleLeaveFeedback}
 		/>
 	);
 };
