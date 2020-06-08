@@ -138,7 +138,7 @@ export const getAverageMedicinesRating = (medicines: IllnessReviewMedicine[]) =>
 	});
 
 export const getAverageRating = (illnessesReview: IllnessReview[]) => {
-	const ratings = getAverageIllnessRating(illnessesReview)
+	const ratings = getAverageIllnessRating(illnessesReview);
 
 	return ratings.reduce((prev, curr) => prev + curr.rating, 0) / ratings.length;
 };

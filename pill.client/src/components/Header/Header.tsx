@@ -42,7 +42,7 @@ const styles = () => ({
 		color: 'white',
 		backgroundColor: '#282728',
 		alignSelf: 'stretch',
-		padding: '0 20px',
+		padding: '0 24px',
 		cursor: 'pointer',
 		fontSize: '17px',
 		textTransform: 'uppercase',
@@ -54,7 +54,7 @@ const styles = () => ({
 	headerButton: {
 		display: 'flex',
 		alignItems: 'center',
-		padding: '0 25px',
+		padding: '0 24px',
 		color: 'white',
 		cursor: 'pointer',
 		'&:hover': {

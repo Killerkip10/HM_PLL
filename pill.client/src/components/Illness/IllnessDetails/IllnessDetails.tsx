@@ -1,5 +1,7 @@
 import React, { memo, useMemo } from 'react';
 
+import { Toolbar } from 'components/common/Toolbar';
+import { Page } from 'components/common/Page';
 import { TextEditor } from 'components/common/TextEditor';
 import { Button } from 'components/common/Button';
 import { IMedicine, IRecommendation, ISymptom } from 'models';
@@ -18,28 +20,33 @@ export const IllnessDetailsComponent = ({ name, description, symptoms = [], reco
 
 	return (
 		<div>
-			<h1>{name}</h1>
+			<Toolbar>
+				<div>Illness details</div>
+				<div>{name}</div>
+			</Toolbar>
 
-			<TextEditor value={description} config={textEditorConfig} />
+			<Page>
+				<TextEditor value={description} config={textEditorConfig} />
 
-			<h3>Symptoms</h3>
-			<ul>
-				{symptoms.map(({ id, name }) => <li key={id}>{name}</li>)}
-			</ul>
+				<h3>Symptoms</h3>
+				<ul>
+					{symptoms.map(({ id, name }) => <li key={id}>{name}</li>)}
+				</ul>
 
-			<h3>Recommendations</h3>
-			<ul>
-				{recommendations.map(({ id, name }) => <li key={id}>{name}</li>)}
-			</ul>
+				<h3>Recommendations</h3>
+				<ul>
+					{recommendations.map(({ id, name }) => <li key={id}>{name}</li>)}
+				</ul>
 
-			<h3>Medicines</h3>
-			<ul>
-				{medicines.map(({ id, name }) => <li key={id}>{name}</li>)}
-			</ul>
+				<h3>Medicines</h3>
+				<ul>
+					{medicines.map(({ id, name }) => <li key={id}>{name}</li>)}
+				</ul>
 
-			<div>{updatedAt}</div>
+				<div>{updatedAt}</div>
 
-			<Button color="secondary" onClick={onLeaveFeedback}>Leave feedback</Button>
+				<Button color="secondary" onClick={onLeaveFeedback}>Leave feedback</Button>
+			</Page>
 		</div>
 	);
 };

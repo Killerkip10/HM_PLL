@@ -9,6 +9,9 @@ const styles = () => ({
 		textTransform: 'none',
 		padding: '6px 18px',
 	},
+	link: {
+		color: '#30b6dd',
+	},
 	primary: {
 		backgroundColor: '#9bc837',
 		'&:hover': {

@@ -1,5 +1,7 @@
 import React, { memo, useCallback } from 'react';
 
+import { Toolbar } from 'components/common/Toolbar';
+import { Page } from 'components/common/Page';
 import { SymptomCreateForm, FORM_NAME } from 'components/common/forms/SymptomCreateForm';
 
 import { SymptomManageTable } from './SymptomManageTable';
@@ -9,13 +11,18 @@ export const SymptomManage = memo(({ symptoms, onSubmitCreateForm, onSubmitEditF
 
 	return (
 		<div>
-			<div>Symptoms</div>
-			<div>
-				<SymptomCreateForm onSubmit={onCreate} />
-				<button type="button" onClick={handleSubmitCreateForm}>Create</button>
-			</div>
+			<Toolbar>
+				<div>Symptoms</div>
+			</Toolbar>
 
-			<SymptomManageTable symptoms={symptoms} onSubmitEditForm={onSubmitEditForm} onEdit={onEdit} onDelete={onDelete} />
+			<Page>
+				<div>
+					<SymptomCreateForm onSubmit={onCreate} />
+					<button type="button" onClick={handleSubmitCreateForm}>Create</button>
+				</div>
+
+				<SymptomManageTable symptoms={symptoms} onSubmitEditForm={onSubmitEditForm} onEdit={onEdit} onDelete={onDelete} />
+			</Page>
 		</div>
-	)
+	);
 });

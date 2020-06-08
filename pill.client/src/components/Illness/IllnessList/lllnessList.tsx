@@ -1,23 +1,27 @@
 import React, { useCallback } from 'react';
-import { withStyles } from '@material-ui/core';
+
+import { Toolbar } from 'components/common/Toolbar';
+import { Page } from 'components/common/Page';
 
 import { IllnessListFilter } from './IllnessListFilter';
 import { IllnessListTable } from './IllnessListTable';
 
-const styles = () => ({
-	illnessList: {
-		padding: '0 20px',
-	}
-});
-
-export const IllnessList = withStyles(styles)(({ symptoms, illnesses, onIllnessesFilter, classes }) => {
+export const IllnessList = ({ symptoms, illnesses, onIllnessesFilter }) => {
 	const handleIllnessesFilterSubmit = useCallback(({ symptoms }) => onIllnessesFilter(symptoms), [onIllnessesFilter]);
 
 	return (
-		<div className={classes.illnessList}>
-			<h3>Illness list</h3>
-			<IllnessListFilter symptoms={symptoms} onSubmit={handleIllnessesFilterSubmit} />
-			<IllnessListTable illnesses={illnesses} />
+		<div>
+			<Toolbar>
+				<div>Search illness</div>
+			</Toolbar>
+
+			<Page>
+				<IllnessListFilter symptoms={symptoms} onSubmit={handleIllnessesFilterSubmit} />
+			</Page>
+
+			<Page padding={false} marginTop={false}>
+				<IllnessListTable illnesses={illnesses} />
+			</Page>
 		</div>
 	);
-});
+};

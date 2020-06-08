@@ -21,15 +21,15 @@ export const renderReduxField = WrappedComponent => {
 	));
 };
 
-export const ArrayField = WrappedComponent => ({ fields, data, meta: { error }, ...props }) => {
+export const ArrayField = WrappedComponent => ({ fields, data, meta: { error }, className, ...props }) => {
 	const handleRemove = useCallback(index => fields.remove(index), [fields]);
 
 	return (
-		<div>
+		<div className={className}>
 			{fields.map((name, index) =>
 				<WrappedComponent key={index} name={name} index={index} data={data} onRemove={handleRemove} {...props} />
 			)}
-			<div>{error}</div>
+			<div style={{ fontSize: '12px', color: '#f44336' }}>{error}</div>
 		</div>
 	);
 };

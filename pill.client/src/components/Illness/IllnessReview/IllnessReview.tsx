@@ -4,25 +4,20 @@ import { LineChart, Line, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Responsiv
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core';
 
+import { Toolbar } from 'components/common/Toolbar';
+import { Page } from 'components/common/Page';
 import { Rating } from 'components/common/Rating';
 import { Select } from 'components/common/Select';
 
 const styles = () => ({
-	illnessReview: {
-		padding: '0 20px',
-	},
 	graphicsContainer: {
 		padding: '10px 30px 20px 0',
 	},
 	medicines: {
 		marginLeft: '65px',
 		width: '200px',
-	},
-	illnessReviews: {
-		marginTop: '20px',
 	},
 	expandedSummary: {
 		width: '100%',
@@ -84,13 +79,13 @@ export const IllnessReviewComponent = ({ illnessName, medicines, illnessGraphicR
 	)), [illnessReviews]);
 
 	return (
-		<div className={classes.illnessReview}>
-			<h3>Illness review</h3>
+		<div>
+			<Toolbar>
+				<div>Illness review</div>
+				<div>{illnessName}</div>
+			</Toolbar>
 
-			<Paper className={classes.graphicsContainer} elevation={3}>
-				<div>
-					{/*<h3>{illnessName}</h3>*/}
-				</div>
+			<Page>
 				<ResponsiveContainer width="100%" height={250}>
 					<LineChart data={illnessGraphicReviews}>
 						<CartesianGrid />
@@ -114,11 +109,11 @@ export const IllnessReviewComponent = ({ illnessName, medicines, illnessGraphicR
 						<Brush />
 					</LineChart>
 				</ResponsiveContainer>
-			</Paper>
+			</Page>
 
-			<div className={classes.illnessReviews}>
+			<Page padding={false}>
 				{renderIllnessReviews}
-			</div>
+			</Page>
 		</div>
 	);
 };

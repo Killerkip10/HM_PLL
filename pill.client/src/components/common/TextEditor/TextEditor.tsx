@@ -1,7 +1,18 @@
 import React, { memo, useMemo, useCallback } from 'react';
+import { compose } from 'redux';
+import { withStyles } from '@material-ui/core';
 import JoditEditor from 'jodit-react';
 
-export const TextEditor = memo(({ config = {}, onChange, onBlur, touched, error, ...props}) => {
+const styles = () => ({
+	error: {
+		marginTop: '5px',
+		height: '12px',
+		fontSize: '12px',
+		color: '#f44336',
+	},
+});
+
+export const TextEditorComponent = ({ config = {}, onChange, onBlur, touched, error, classes, ...props}) => {
 	const editorConfig = useMemo(() => ({ readonly: false, minHeight: 'auto', ...config }), [config]);
 
 	const handleEditorBlur = useCallback((value) => {
@@ -10,13 +21,18 @@ export const TextEditor = memo(({ config = {}, onChange, onBlur, touched, error,
 	}, [onChange, onBlur]);
 
 	return (
-		<div>
+		<div className={props.className}>
 			<JoditEditor
 				config={editorConfig}
 				onBlur={handleEditorBlur}
 				{...props}
 			/>
-			<div>{touched && error}</div>
+			<div className={classes.error}>{touched && error}</div>
 		</div>
 	);
-});
+};
+
+export const TextEditor = compose(
+	withStyles(styles),
+	memo,
+)(TextEditorComponent);

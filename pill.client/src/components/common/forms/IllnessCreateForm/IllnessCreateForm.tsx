@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 import { reduxForm } from 'redux-form';
+import { compose } from 'redux';
+import { withStyles } from '@material-ui/core';
 
 import { RFields } from 'components/common/RFields';
 import { Button } from 'components/common/Button';
@@ -8,7 +10,31 @@ import { numberNormalizer } from 'utils';
 import { FORM_NAME, FORM_FIELDS } from './constants';
 import { validate, asyncValidate } from './validators';
 
-export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medicines, recommendations }) => {
+const styles = () => ({
+	description: {
+		marginTop: '20px',
+	},
+	additional: {
+		marginTop: '20px',
+		display: 'flex',
+		justifyContent: 'space-between',
+		'& > div': {
+			width: '100%',
+		},
+		'& > div > div:first-child': {
+			marginBottom: '10px',
+		},
+		'& > div > div:last-child': {
+			display: 'flex',
+			justifyContent: 'center',
+		},
+		'& > div:not(:first-child)': {
+			marginLeft: '40px',
+		},
+	}
+});
+
+export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medicines, recommendations, classes }) => {
 	const handleAddSymptom = useCallback(() => array.push(FORM_FIELDS.SYMPTOMS, ''), [array]);
 
 	const handleAddMedicine = useCallback(() => array.push(FORM_FIELDS.MEDICINES, ''), [array]);
@@ -17,48 +43,62 @@ export const IllnessCreateFormComponent = ({ handleSubmit, array, symptoms, medi
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h3>Name</h3>
-
 			<RFields.Input
 				name={FORM_FIELDS.NAME}
-				placeholder="Name"
+				label="Name"
 			/>
-
-			<h3>Description</h3>
 
 			<RFields.TextEditor
 				name={FORM_FIELDS.DESCRIPTION}
+				className={classes.description}
 			/>
 
-			<h3>Symptoms</h3>
+			<div className={classes.additional}>
+				<div>
+					<div>Symptoms</div>
 
-			<RFields.ArraySelect
-				name={FORM_FIELDS.SYMPTOMS}
-				data={symptoms}
-				normalize={numberNormalizer}
-			/>
+					<RFields.ArraySelect
+						name={FORM_FIELDS.SYMPTOMS}
+						data={symptoms}
+						label="Symptom"
+						normalize={numberNormalizer}
+					/>
 
-			<Button type="button" color="secondary" onClick={handleAddSymptom}>Add symptom</Button>
+					<div>
+						<Button type="button" color="link" onClick={handleAddSymptom}>Add symptom</Button>
+					</div>
+				</div>
 
-			<h3>Medicines</h3>
+				<div>
+					<div>Medicines</div>
 
-			<RFields.ArraySelect
-				name={FORM_FIELDS.MEDICINES}
-				data={medicines}
-				normalize={numberNormalizer}
-			/>
+					<RFields.ArraySelect
+						name={FORM_FIELDS.MEDICINES}
+						data={medicines}
+						label="Medicine"
+						normalize={numberNormalizer}
+					/>
 
-			<Button type="button" color="secondary" onClick={handleAddMedicine}>Add medicine</Button>
+					<div>
+						<Button type="button" color="link" onClick={handleAddMedicine}>Add medicine</Button>
+					</div>
+				</div>
 
-			<h3>Recommendations</h3>
+				<div>
+					<div>Recommendations</div>
 
-			<RFields.ArraySelect
-				name={FORM_FIELDS.RECOMMENDATIONS}
-				data={recommendations}
-				normalize={numberNormalizer}
-			/>
+					<RFields.ArraySelect
+						name={FORM_FIELDS.RECOMMENDATIONS}
+						data={recommendations}
+						label="Recommendation"
+						normalize={numberNormalizer}
+					/>
 
-			<Button type="button" color="secondary" onClick={handleAddRecommendation}>Add recommendation</Button>
+					<div>
+						<Button type="button" color="link" onClick={handleAddRecommendation}>Add recommendation</Button>
+					</div>
+				</div>
+			</div>
 		</form>
 	);
 };
@@ -79,4 +119,7 @@ const formCreator = reduxForm({
 	}
 });
 
-export const IllnessCreateForm = formCreator(IllnessCreateFormComponent);
+export const IllnessCreateForm = compose(
+	formCreator,
+	withStyles(styles),
+)(IllnessCreateFormComponent);

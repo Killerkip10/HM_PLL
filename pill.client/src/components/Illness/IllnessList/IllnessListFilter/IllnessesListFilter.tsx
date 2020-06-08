@@ -9,11 +9,23 @@ import { validate } from './validators';
 import { FORM_NAME, FORM_FIELDS } from './constants';
 
 const styles = () => ({
-	select: {
-		width: '200px',
+	filters: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		'& > div': {
+			width: '33%',
+		}
 	},
 	submitButton: {
 		marginRight: '10px',
+	},
+	actions: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	error: {
+		color: '#f44336',
 	}
 });
 
@@ -25,12 +37,18 @@ export const IllnessListFilterComponent = ({ handleSubmit, array, symptoms, erro
 			<RFields.ArraySelect
 				name={FORM_FIELDS.SYMPTOMS}
 				data={symptoms}
-				className={classes.select}
+				className={classes.filters}
+				label="Symptom"
 			/>
 
-			<div>{submitFailed && error}</div>
-			<Button className={classes.submitButton} type="submit">Submit</Button>
-			<Button color="secondary" type="button" onClick={handleAddSymptom}>Add symptom</Button>
+			<div className={classes.actions}>
+				<div>
+					<Button className={classes.submitButton} type="submit">Search</Button>
+					<Button color="secondary" type="button" onClick={handleAddSymptom}>Add symptom</Button>
+				</div>
+
+				<div className={classes.error}>{submitFailed && error}</div>
+			</div>
 		</form>
 	);
 };
