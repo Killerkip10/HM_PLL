@@ -14,17 +14,57 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Symptoms', [
       {
-        name: 'Кашель',
+        name: 'Cough',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Температура',
+        name: 'Temperature',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Озноб',
+        name: 'Chills',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Fever',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Dry cough',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Fatigue',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Sputum',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Labored breathing',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Sore throat',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Headache',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Nausea and vomiting',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

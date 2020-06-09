@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 
 import { IllnessCreateForm } from 'components/common/forms';
 import { Toolbar } from 'components/common/Toolbar';
+import { Button } from 'components/common/Button';
 import { Page } from 'components/common/Page';
 
 export const IllnessEditComponent = ({ illness, symptoms, medicines, recommendations }) => (
@@ -17,6 +18,8 @@ export const IllnessEditComponent = ({ illness, symptoms, medicines, recommendat
 				medicines={medicines}
 				recommendations={recommendations}
 			/>
+
+			<Button>Save</Button>
 		</Page>
 	</div>
 );

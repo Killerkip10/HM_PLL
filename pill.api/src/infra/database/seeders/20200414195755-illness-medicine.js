@@ -26,8 +26,26 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        illnessId: 1,
+        medicineId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         illnessId: 2,
         medicineId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        illnessId: 2,
+        medicineId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        illnessId: 2,
+        medicineId: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
