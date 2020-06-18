@@ -14,8 +14,8 @@
     "db:migrate": "sequelize db:migrate",
     "db:migrate:undo": "sequelize db:migrate:undo",
     "db:migrate:undo:all": "sequelize db:migrate:undo:all",
-    "db:seed": "sequelize db:seed:all",
-    "db:refresh": "yarn run db:drop && yarn run db:create && yarn run db:migrate && yarn run db:seed"
+		"db:seed": "sequelize db:seed:all",
+    "db:refresh": "yarn run db:drop || yarn run db:create && yarn run db:migrate && yarn run db:seed"
   },
   "husky": {
     "hooks": {
